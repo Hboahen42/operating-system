@@ -1,0 +1,2 @@
+Write-Host "Top 5 Memory Consuming Processes:"
+Get-Process | Sort-Object WorkingSet -Descending | Select-Object -First 5 Name, Id, @{Name="Mem(MB)"; Expression={[math]::round($_.WorkingSet64 / 1MB, 2)}} | Format-Table
